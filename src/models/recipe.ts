@@ -4,22 +4,31 @@ export interface IRecipe extends Document {
   name: string;
   tags: string[];
   steps: string[];
-  ingredients: string[];
+  ingredients: IRecipeIngredient[];
   image: string;
+  author: string;
+}
+
+export interface IRecipeIngredient {
+  name: string;
+  number: number;
+  note: string;
 }
 
 const RecipeSchema = new Schema({
   name: { type: String, required: true },
-  tags: [{ type: Schema.Types.ObjectId, ref: "Tags" }],
+  tags: [String],
   steps: [String],
   description: String,
   ingredients: [
     {
+      name: String,
       number: Number,
-      ingredient: String,
+      note: String,
     },
   ],
   image: String,
+  author: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
 const Recipe = mongoose.model<IRecipe>("Recipe", RecipeSchema);

@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface IIngredient extends Document {
+export interface INameDoc extends Document {
   name: string;
 }
 
@@ -8,6 +8,6 @@ const IngredientSchema = new Schema({
   name: { type: String, required: true, unique: true },
 });
 
-const Ingredient = mongoose.model<IIngredient>("Ingredient", IngredientSchema);
+const Ingredient = mongoose.model<INameDoc>("Ingredient", IngredientSchema);
 
 export default Ingredient;

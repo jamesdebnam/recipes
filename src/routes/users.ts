@@ -48,9 +48,10 @@ router.post("/login", async (req, res) => {
         .send({ status: "error", message: "No user with that email found" });
     }
     passport.authenticate("local")(req, res, () => {
-      res
-        .status(200)
-        .send({ status: "ok", data: (req.user as IUser).getUserObj() });
+      res.status(200).send({
+        status: "ok",
+        data: (req.user as IUser).getUserObj(),
+      });
     });
   } catch ({ message }) {
     return res.status(400).send({ status: "error", message });
@@ -61,7 +62,7 @@ router.post("/logout", async (req, res) => {
   try {
     if (!isLoggedIn(req)) {
       return res
-        .status(400)
+        .status(401)
         .send({ status: "error", message: "User is not logged in" });
     }
     req.session.destroy((err) => {
