@@ -23,7 +23,6 @@ router
   })
   .post(async (req, res) => {
     try {
-      logger.info(req.body);
       const newUser = new User(req.body);
       User.register(newUser, req.body.password, (err, user) => {
         if (err) {

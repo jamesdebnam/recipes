@@ -1,13 +1,13 @@
-import mongoose, {Schema, Document} from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface IIngredient extends Document {
-    name: string;
+  name: string;
 }
 
 const IngredientSchema = new Schema({
-    name: {type:String, required: true, unique: true},
-})
+  name: { type: String, required: true, unique: true },
+});
 
-const Ingredient= mongoose.model<IIngredient>('User', IngredientSchema)
+const Ingredient = mongoose.model<IIngredient>("Ingredient", IngredientSchema);
 
 export default Ingredient;
