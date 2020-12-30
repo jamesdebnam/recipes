@@ -1,5 +1,5 @@
 import express from "express";
-import Ingredient, { IIngredient } from "../models/ingredient";
+import Ingredient from "../models/ingredient";
 const router = express.Router();
 
 router.route("/").get(async (req, res) => {

@@ -2,7 +2,12 @@ import express from "express";
 import User, { IUser } from "../models/user";
 import logger from "loglevel";
 import passport from "passport";
-import { isLoggedIn } from "../util/schemaValidation";
+import {
+  isLoggedIn,
+  validateProtectedRecipe,
+  validateProtectedUser,
+} from "../util/schemaValidation";
+import Recipe from "../models/recipe";
 
 const router = express.Router();
 router
@@ -34,6 +39,44 @@ router
           res.status(200).send({ status: "ok", data: newUser.getUserObj() });
         }
       });
+    } catch ({ message }) {
+      return res.status(500).send({ status: "error", message });
+    }
+  });
+
+router
+  .route("/:id")
+  .get(async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(404).send({
+          status: "error",
+          message: "No user with that _id found",
+        });
+      }
+      return res.status(200).send({ status: "ok", data: user });
+    } catch ({ message }) {
+      return res.status(500).send({ status: "error", message });
+    }
+  })
+  .patch(async (req, res) => {
+    try {
+      await validateProtectedUser(req);
+      const updatedUser = await User.updateOne(
+        { _id: req.params.id },
+        { $set: req.body }
+      );
+      return res.status(200).send({ status: "ok", data: updatedUser });
+    } catch ({ message }) {
+      return res.status(500).send({ status: "error", message });
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      await validateProtectedUser(req);
+      await User.deleteOne({ _id: req.params.id });
+      return res.status(200).send({ status: "ok" });
     } catch ({ message }) {
       return res.status(500).send({ status: "error", message });
     }

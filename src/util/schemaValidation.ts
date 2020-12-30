@@ -1,6 +1,7 @@
 import { Request } from "express";
 import Recipe from "../models/recipe";
 import { getUserId } from "./mongoose";
+import User from "../models/user";
 
 declare module "express-session" {
   interface Session {
@@ -26,6 +27,16 @@ export async function validateProtectedRecipe(req: Request): Promise<void> {
   if (!recipe) {
     throw new Error("No recipe with that _id found");
   } else if (userId !== recipe.author) {
+    throw new Error("Current user is not authorized to edit this recipe");
+  }
+}
+
+export async function validateProtectedUser(req: Request): Promise<void> {
+  if (!isLoggedIn(req)) {
+    throw new Error("user is not logged in.");
+  }
+  const userId = await getUserId(req);
+  if (userId !== req.params.id) {
     throw new Error("Current user is not authorized to edit this recipe");
   }
 }

@@ -75,6 +75,7 @@ router
     try {
       await validateProtectedRecipe(req);
       await Recipe.deleteOne({ _id: req.params.id });
+      return res.status(200).send({ status: "ok" });
     } catch ({ message }) {
       return res.status(500).send({ status: "error", message });
     }

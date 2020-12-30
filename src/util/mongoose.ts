@@ -14,7 +14,7 @@ export async function saveUniqueDocuments(
 }
 
 export async function getUserId(req: any): Promise<string> {
-  const user = await User.findOne({ name: req.session.passport.user });
+  const user = await User.findOne({ email: req.session.passport.user });
   if (!user) {
     throw new Error("No user found in database with session email");
   } else {

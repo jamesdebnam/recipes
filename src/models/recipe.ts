@@ -6,12 +6,14 @@ export interface IRecipe extends Document {
   steps: string[];
   ingredients: IRecipeIngredient[];
   image: string;
+  serves: number;
   author: string;
 }
 
 export interface IRecipeIngredient {
   name: string;
   number: number;
+  unit: string;
   note: string;
 }
 
@@ -20,10 +22,12 @@ const RecipeSchema = new Schema({
   tags: [String],
   steps: [String],
   description: String,
+  serves: Number,
   ingredients: [
     {
       name: String,
       number: Number,
+      unit: String,
       note: String,
     },
   ],
