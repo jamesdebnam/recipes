@@ -10,6 +10,20 @@ import {
 import Recipe from "../models/recipe";
 
 const router = express.Router();
+
+router.get("/isLoggedIn", async (req, res) => {
+  try {
+    if (!isLoggedIn(req)) {
+      return res.status(200).send({ status: "ok", data: false });
+    } else {
+      const user = await User.find({ email: req.session.passport.user });
+      return res.status(200).send({ status: "ok", data: user });
+    }
+  } catch ({ message }) {
+    return res.status(400).send({ status: "error", message });
+  }
+});
+
 router
   .route("/")
   .get(async (req, res) => {

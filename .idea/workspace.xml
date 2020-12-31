@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b214dca-113b-4254-92d7-e6310848f0c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/jamesdebnam.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/recipes.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/recipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/recipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/ingredients.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/ingredients.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/recipes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/recipes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/mongoose.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/mongoose.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/schemaValidation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/schemaValidation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +63,8 @@
       <updated>1608686924946</updated>
       <workItem from="1608686931130" duration="18206000" />
       <workItem from="1608958477521" duration="10355000" />
-      <workItem from="1609318691900" duration="533000" />
+      <workItem from="1609318691900" duration="553000" />
+      <workItem from="1609383049597" duration="1057000" />
     </task>
     <task id="LOCAL-00001" summary="Set up basic express structure">
       <created>1608691553019</created>
@@ -120,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609061830636</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added more endpoints to user">
+      <created>1609319242768</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609319242768</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +140,8 @@
     <MESSAGE value="Finished login and logout routes" />
     <MESSAGE value="Added basic routes for recipes tags and ingredients" />
     <MESSAGE value="Refactored routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored routes" />
+    <MESSAGE value="added more endpoints to user" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more endpoints to user" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

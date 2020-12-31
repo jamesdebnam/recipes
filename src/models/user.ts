@@ -1,6 +1,12 @@
-import mongoose, {Schema, Document, Model, PassportLocalSchema, PassportLocalDocument} from 'mongoose';
-import passportLocalMongoose from 'passport-local-mongoose';
-import {validateEmail} from "../util/schemaValidation";
+import mongoose, {
+  Schema,
+  Document,
+  Model,
+  PassportLocalSchema,
+  PassportLocalDocument,
+} from "mongoose";
+import passportLocalMongoose from "passport-local-mongoose";
+import { validateEmail } from "../util/schemaValidation";
 
 export interface IUser extends PassportLocalDocument {
   firstName: string;
@@ -9,42 +15,55 @@ export interface IUser extends PassportLocalDocument {
   recipes: string[];
   getUserObj: () => IUser;
   salt?: string;
-  hash?: string
+  hash?: string;
 }
 
 const UserSchema = new Schema({
   firstName: {
     type: String,
-    required: [true, 'First name required']
+    required: [true, "First name required"],
   },
   lastName: {
     type: String,
-    required: [true, 'Last name required']
+    required: [true, "Last name required"],
   },
   email: {
     type: String,
-    required: [true, 'Email required'],
-    unique: true
+    required: [true, "Email required"],
+    unique: true,
   },
-  starredRecipes: [{
-    recipeId: {type: Schema.Types.ObjectId, ref: 'Recipes'},
-    userTags: [{type: Schema.Types.ObjectId, ref: 'Tags'}]
-  }],
-  recipes: [{type: Schema.Types.ObjectId, ref: 'Recipes'}]
-})
+  starredRecipes: [{ type: Schema.Types.ObjectId, ref: "Recipes" }],
+  customGroups: [
+    {
+      name: String,
+      recipes: [{ type: Schema.Types.ObjectId, ref: "Recipes" }],
+    },
+  ],
+  recipes: [{ type: Schema.Types.ObjectId, ref: "Recipes" }],
+});
 
-UserSchema.path('email').validate(validateEmail, 'Not a valid email', 'Invalid Email')
+UserSchema.path("email").validate(
+  validateEmail,
+  "Not a valid email",
+  "Invalid Email"
+);
 
-UserSchema.plugin(passportLocalMongoose, {usernameField: 'email', passwordField: 'password', passReqToCallback: true})
+UserSchema.plugin(passportLocalMongoose, {
+  usernameField: "email",
+  passwordField: "password",
+  passReqToCallback: true,
+});
 
 UserSchema.methods.getUserObj = function () {
-  const doc: IUser = {...this._doc};
+  const doc: IUser = { ...this._doc };
   delete doc.salt;
   delete doc.hash;
   return doc;
-}
+};
 
-const User: mongoose.PassportLocalModel<IUser> = mongoose.model('User', UserSchema as PassportLocalSchema)
-
+const User: mongoose.PassportLocalModel<IUser> = mongoose.model(
+  "User",
+  UserSchema as PassportLocalSchema
+);
 
 export default User;
