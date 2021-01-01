@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3b214dca-113b-4254-92d7-e6310848f0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/start.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/start.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/schemaValidation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/schemaValidation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +67,7 @@
       <workItem from="1608686931130" duration="18206000" />
       <workItem from="1608958477521" duration="10355000" />
       <workItem from="1609318691900" duration="553000" />
-      <workItem from="1609383049597" duration="1057000" />
+      <workItem from="1609383049597" duration="5090000" />
     </task>
     <task id="LOCAL-00001" summary="Set up basic express structure">
       <created>1608691553019</created>
@@ -115,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609319242768</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added login check route">
+      <created>1609386952350</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1609386952350</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +151,8 @@
     <MESSAGE value="Added basic routes for recipes tags and ingredients" />
     <MESSAGE value="Refactored routes" />
     <MESSAGE value="added more endpoints to user" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more endpoints to user" />
+    <MESSAGE value="added login check route" />
+    <option name="LAST_COMMIT_MESSAGE" value="added login check route" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

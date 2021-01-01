@@ -2,6 +2,7 @@ import { Request } from "express";
 import Recipe from "../models/recipe";
 import { getUserId } from "./mongoose";
 import User from "../models/user";
+import logger from "loglevel";
 
 declare module "express-session" {
   interface Session {
@@ -15,6 +16,7 @@ export function validateEmail(email: string): boolean {
 }
 
 export function isLoggedIn(req: Request): boolean {
+  console.log(req.session);
   return !!req.session.passport?.user;
 }
 
@@ -36,7 +38,7 @@ export async function validateProtectedUser(req: Request): Promise<void> {
     throw new Error("user is not logged in.");
   }
   const userId = await getUserId(req);
-  if (userId !== req.params.id) {
-    throw new Error("Current user is not authorized to edit this recipe");
+  if (`${userId}` !== req.params.id) {
+    throw new Error(`Current user is not authorized to edit this recipe`);
   }
 }

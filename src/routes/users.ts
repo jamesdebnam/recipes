@@ -16,6 +16,21 @@ router.get("/isLoggedIn", async (req, res) => {
     if (!isLoggedIn(req)) {
       return res.status(200).send({ status: "ok", data: false });
     } else {
+      const user = await User.findOne({ email: req.session.passport.user });
+      return res.status(200).send({ status: "ok", data: user });
+    }
+  } catch ({ message }) {
+    return res.status(400).send({ status: "error", message });
+  }
+});
+
+router.post("/groups", async (req, res) => {
+  try {
+    if (!isLoggedIn(req)) {
+      return res
+        .status(401)
+        .send({ status: "error", message: "User is not logged in" });
+    } else {
       const user = await User.find({ email: req.session.passport.user });
       return res.status(200).send({ status: "ok", data: user });
     }

@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import logger from "loglevel";
 import "express-async-errors";
 
+import cors from "cors";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
@@ -22,6 +23,7 @@ function startServer({ port = process.env.PORT } = {}) {
   app.listen(port, () => {
     logger.info(`Listening on port ${port}`);
   });
+  app.use(cors({ origin: "http://localhost:3000", credentials: true }));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(cookieParser());
@@ -31,9 +33,6 @@ function startServer({ port = process.env.PORT } = {}) {
       store: new (connectMongo(session))({ mongooseConnection: db }),
       resave: false,
       saveUninitialized: false,
-      cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7 * 2,
-      },
     })
   );
   passport.use(
