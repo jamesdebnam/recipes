@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b214dca-113b-4254-92d7-e6310848f0c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/start.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/start.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/schemaValidation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/schemaValidation.ts" afterDir="false" />
-    </list>
+    <list default="true" id="3b214dca-113b-4254-92d7-e6310848f0c9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +40,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -67,7 +60,7 @@
       <workItem from="1608686931130" duration="18206000" />
       <workItem from="1608958477521" duration="10355000" />
       <workItem from="1609318691900" duration="553000" />
-      <workItem from="1609383049597" duration="5090000" />
+      <workItem from="1609383049597" duration="5455000" />
     </task>
     <task id="LOCAL-00001" summary="Set up basic express structure">
       <created>1608691553019</created>
@@ -125,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609386952350</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fixed passport cors stuff">
+      <created>1609490247820</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1609490247820</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,7 +152,8 @@
     <MESSAGE value="Refactored routes" />
     <MESSAGE value="added more endpoints to user" />
     <MESSAGE value="added login check route" />
-    <option name="LAST_COMMIT_MESSAGE" value="added login check route" />
+    <MESSAGE value="fixed passport cors stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed passport cors stuff" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
