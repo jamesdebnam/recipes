@@ -25,8 +25,9 @@
     "@types/mongoose": "^5.10.3",
     "@types/passport": "^1.0.4",
     "@types/passport-local-mongoose": "^4.0.13",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "connect-mongo": "^3.2.0",
+    "connect-pg-simple": "^6.2.1",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
@@ -34,17 +35,22 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "express-session": "^1.17.1",
+    "joi": "^17.4.0",
+    "knex": "^0.95.6",
     "loglevel": "^1.7.1",
-    "mongoose": "^5.11.8",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.0.1"
+    "passport-local-mongoose": "^6.0.1",
+    "pg": "^8.6.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/connect-pg-simple": "^4.2.4",
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.9",
     "@types/node": "^14.14.14",
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.10",
+    "ts-node": "^10.0.0",
     "typescript": "^4.1.3"
   }
 }

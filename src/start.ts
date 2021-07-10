@@ -4,18 +4,17 @@ import "express-async-errors";
 
 import cors from "cors";
 import session from "express-session";
+import pgSession from "connect-pg-simple";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import { getRoutes } from "./routes";
-import mongoose from "mongoose";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import User from "./models/user";
-import connectMongo from "connect-mongo";
+import db from "../db";
+import bcrypt from "bcryptjs";
+import { User } from "../db/types";
 
 function startServer({ port = process.env.PORT } = {}) {
-  const db = mongoose.connection;
-  db.on("error", logger.error.bind(console, "MongoDB connection error:"));
   const app = express();
   app.use(errorMiddleware);
   app.use(bodyParser.json());
@@ -30,32 +29,47 @@ function startServer({ port = process.env.PORT } = {}) {
   app.use(
     session({
       secret: process.env.SESSION_SECRET,
-      store: new (connectMongo(session))({ mongooseConnection: db }),
+      store: new (pgSession(session))({}),
       resave: false,
       saveUninitialized: false,
+      cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
     })
   );
   passport.use(
-    new LocalStrategy(
-      { usernameField: "email", passwordField: "password" },
-      User.authenticate()
-    )
+    new LocalStrategy(async (email, password, cb) => {
+      try {
+        const users = await db<User>("users").where({ email });
+        if (users.length === 0) {
+          return cb(null, false);
+        }
+        const [user] = users;
+        if (bcrypt.compareSync(password, user.hash)) {
+          return cb(null, { ...user, hash: undefined, salt: undefined });
+        } else {
+          return cb(null, false);
+        }
+      } catch (e) {
+        logger.error("Passport local strategy err:", e);
+        return cb("Couldn't log in due to internal server error");
+      }
+    })
   );
-  passport.serializeUser(User.serializeUser());
-  passport.deserializeUser(User.deserializeUser());
-  app.use("/api", getRoutes());
-}
 
-async function connectToMongo() {
-  try {
-    await mongoose.connect(process.env.DB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    logger.info("Connection to mongoDB successful");
-  } catch (e) {
-    logger.error(`Couldn't connect to mongoDB: ${e}`);
-  }
+  passport.serializeUser((user: User, done) => {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(async (id: number, cb) => {
+    try {
+      const users = await db<User>("users").where({ id });
+      cb(null, users[0]);
+    } catch (e) {
+      logger.error("Deserialize user err: ", e);
+      return cb(e);
+    }
+  });
+
+  app.use("/api", getRoutes());
 }
 
 function errorMiddleware(
@@ -78,4 +92,4 @@ function errorMiddleware(
   }
 }
 
-export { startServer, connectToMongo };
+export { startServer };
