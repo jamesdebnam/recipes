@@ -13,10 +13,10 @@ import { Strategy as LocalStrategy } from "passport-local";
 import db from "../db";
 import bcrypt from "bcryptjs";
 import { User } from "../db/types";
+import { errorMiddleware } from "./middlewares/error";
 
 function startServer({ port = process.env.PORT } = {}) {
   const app = express();
-  app.use(errorMiddleware);
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.listen(port, () => {
@@ -69,27 +69,8 @@ function startServer({ port = process.env.PORT } = {}) {
     }
   });
 
+  app.use(errorMiddleware);
   app.use("/api", getRoutes());
-}
-
-function errorMiddleware(
-  error: any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  if (res.headersSent) {
-    next(error);
-  } else {
-    logger.error(error);
-    res.status(500);
-    res.json({
-      message: error.message,
-      ...(process.env.NODE_ENV === "production"
-        ? null
-        : { stack: error.stack }),
-    });
-  }
 }
 
 export { startServer };

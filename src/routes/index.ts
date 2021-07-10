@@ -1,5 +1,5 @@
 import express from "express";
-import usersRouter from "./users";
+import usersRouter from "./user.route";
 // import recipesRouter from "./recipes";
 // import tagsRouter from "./tags";
 // import ingredientsRouter from "./ingredients";
